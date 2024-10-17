@@ -185,4 +185,47 @@ public class DevTest
         return retVal;
     }
 
+
+    /**
+     * Gets a Y or N from the user (Yes or No) and returns the equivalent, true or false
+     * @param pipe Scanner to user for input
+     * @param prompt Tells the user what to enter
+     * @return true or false based on Y or N
+     */
+    public static boolean getYNConfirm(Scanner pipe, String prompt)
+    {
+        String YNResponse = "";
+        boolean retVal = false;
+        boolean done = false;
+
+        do
+        {
+            System.out.print(prompt + ": ");
+            YNResponse = pipe.nextLine();
+
+            if(!YNResponse.matches("[YyNn]"))
+            {
+                System.out.println("You must enter [Y/N]: ");
+
+            }
+            else
+            {
+                done= true;
+                switch (YNResponse)
+                {
+                    case "Y":
+                    case "y":
+                        retVal = true;
+                        break;
+                    case "N":
+                    case "n":
+                        retVal = false;
+                                break;
+                }
+            }
+        }while(!done);
+
+        return retVal;
+    }
+
 }
