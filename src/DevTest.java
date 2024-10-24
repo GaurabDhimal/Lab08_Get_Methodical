@@ -10,6 +10,7 @@ public class DevTest
         int favNum = 0;
         double salary = 0;
         double constraint = 0; // must be between 100-10000
+        String SSN = "";
 
         firstName = getNonZeroLenString(in, "Enter your first name");
         System.out.println("Fname is " + firstName);
@@ -20,7 +21,7 @@ public class DevTest
 
 
         salary = getDouble(in, "Enter your salary");
-        System.out.println("Salary is " + salary);
+        System.out.println("Salary is $" + salary);
 
 
         favNum = getRangedInt(in, "Enter your favorite number", 1, 10);
@@ -29,6 +30,15 @@ public class DevTest
 
         constraint = getRangedDouble(in, "Enter the constraint double", 100, 10000);
         System.out.println("Constraint is " + constraint);
+
+
+        boolean wantToQuit = getYNConfirm(in, "Do you want to quit?: ");
+        System.out.println(wantToQuit);
+
+
+        SSN = getRegExString(in, "Enter your SSN", "^\\d{3}-\\d{2}-\\d{4}$");
+
+
     }
 
     public static String getNonZeroLenString(Scanner pipe, String prompt)
@@ -226,6 +236,31 @@ public class DevTest
         }while(!done);
 
         return retVal;
+    }
+
+
+    public static String getRegExString(Scanner pipe, String prompt, String regEx)
+    {
+        String retVal = "";
+        boolean done = false;
+
+        do
+        {
+            System.out.print(prompt + "" + regEx);
+            retVal = pipe.nextLine();
+
+            if(retVal.matches(regEx))
+            {
+                done = true;
+            }
+            else
+            {
+                System.out.println("You must enter a matching expression " + regEx + " not " + retVal);
+            }
+
+        }while(!done);
+
+        return  retVal;
     }
 
 }

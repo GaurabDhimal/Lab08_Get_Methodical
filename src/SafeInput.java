@@ -175,4 +175,79 @@ public class SafeInput
 
         return retVal;
     }
+
+
+    /**
+     * Gets a Y or N from the user (Yes or No) and returns the equivalent, true or false
+     * @param pipe Scanner to user for input
+     * @param prompt Tells the user what to enter
+     * @return true or false based on Y or N
+     */
+    public static boolean getYNConfirm(Scanner pipe, String prompt)
+    {
+        String YNResponse = "";
+        boolean retVal = false;
+        boolean done = false;
+
+        do
+        {
+            System.out.print(prompt + ": ");
+            YNResponse = pipe.nextLine();
+
+            if(!YNResponse.matches("[YyNn]"))
+            {
+                System.out.println("You must enter [Y/N]: ");
+
+            }
+            else
+            {
+                done= true;
+                switch (YNResponse)
+                {
+                    case "Y":
+                    case "y":
+                        retVal = true;
+                        break;
+                    case "N":
+                    case "n":
+                        retVal = false;
+                        break;
+                }
+            }
+        }while(!done);
+
+        return retVal;
+    }
+
+    /**
+     * Gets a SSN from the user, making sure it is withing the character limits
+     * @param pipe Scanner for input
+     * @param prompt Prompts the user
+     * @param regEx Makes sure the user inputs matches the regular expression
+     * @return not sure
+     */
+
+    public static String getRegExString(Scanner pipe, String prompt, String regEx)
+    {
+        String retVal = "";
+        boolean done = false;
+
+        do
+        {
+            System.out.print(prompt + "" + regEx);
+            retVal = pipe.nextLine();
+
+            if(retVal.matches(regEx))
+            {
+                done = true;
+            }
+            else
+            {
+                System.out.println("You must enter a matching expression " + regEx + " not " + retVal);
+            }
+
+        }while(!done);
+
+        return  retVal;
+    }
 }
