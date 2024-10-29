@@ -32,12 +32,12 @@ public class DevTest
         System.out.println("Constraint is " + constraint);
 
 
-        boolean wantToQuit = getYNConfirm(in, "Do you want to quit?: ");
+        boolean wantToQuit = getYNConfirm(in, "Do you want to quit?");
         System.out.println(wantToQuit);
 
 
         SSN = getRegExString(in, "Enter your SSN", "^\\d{3}-\\d{2}-\\d{4}$");
-
+        System.out.println("Your SSN is: " + SSN);
 
     }
 

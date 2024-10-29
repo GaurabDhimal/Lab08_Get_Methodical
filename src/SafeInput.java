@@ -224,7 +224,7 @@ public class SafeInput
      * @param pipe Scanner for input
      * @param prompt Prompts the user
      * @param regEx Makes sure the user inputs matches the regular expression
-     * @return not sure
+     * @return true or false depending on y or n input
      */
 
     public static String getRegExString(Scanner pipe, String prompt, String regEx)
